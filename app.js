@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
 mongodb();
-app.use("/api", TextRoutes);
+app.use("/api/text-post", TextRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(
