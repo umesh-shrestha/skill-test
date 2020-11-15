@@ -1,9 +1,17 @@
+const TextPost = require("../models/textpost");
+
 exports.findAllTextPost = function (request, response, next) {
     response.send("works");
 };
 
-exports.createTextPost = function (request, response, next) {
-    response.send("createTextPost");
+exports.createTextPost = async function (request, response, next) {
+    try {
+        const textpost = await TextPost.create(request.body);
+        response.status(200).json({ sucess: true, data: textpost });
+    } catch (error) {
+        response.status(400).json({ sucess: false });
+        next(error);
+    }
 };
 
 exports.findTextPostById = function (request, response, next) {
