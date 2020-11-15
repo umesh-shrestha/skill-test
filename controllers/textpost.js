@@ -8,6 +8,7 @@ exports.createTextPost = async function (request, response, next) {
     try {
         const textpost = await TextPost.create(request.body);
         response.status(200).json({ sucess: true, data: textpost });
+        response.send(data);
     } catch (error) {
         response.status(400).json({ sucess: false });
         next(error);

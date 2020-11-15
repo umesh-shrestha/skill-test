@@ -2,10 +2,11 @@ const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 dotenv.config({ path: "./config/.env" });
+const bodyParser = require("body-parser");
 const mongodb = require("./util/database");
 const TextRoutes = require("./routes/textpost");
 const app = express();
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }

@@ -24,9 +24,8 @@ const TextPostSchema = new Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.Model("TextPost", TextPostSchema);
-
 TextPostSchema.pre("save", function (next) {
     this.slug = slugify(this.title, { lower: true });
     next();
 });
+module.exports = mongoose.model("TextPost", TextPostSchema);
